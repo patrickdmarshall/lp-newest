@@ -1,0 +1,7 @@
+html-pdf-node
+puppeteer
+puppeteer-core
+@supabase/supabase-js
+@supabase/auth-helpers-nextjs
+@supabase/ssr
+framer-motion

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://www.levelplay.co</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Main Navigation Pages - High Priority -->
+  <url>
+    <loc>https://www.levelplay.co/opportunities</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/venues</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/artists</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Venue Pages -->
+  <url>
+    <loc>https://www.levelplay.co/venues/ar-music-bar</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/venues/the-basement</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/venues/kemba-live</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/venues/newport-music-hall</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Individual Opportunity Pages -->
+  <url>
+    <loc>https://www.levelplay.co/opportunities/jeremy-jordan-age-madness</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/opportunities/hunter-metts</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/opportunities/marlon-funaki</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/opportunities/headliner-ar-music-bar</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/opportunities/headliner-newport-music-hall</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Application Pages -->
+  <url>
+    <loc>https://www.levelplay.co/apply</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/apply/artist</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.levelplay.co/apply/venue</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Contact and Info Pages -->
+  <url>
+    <loc>https://www.levelplay.co/contact</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Sign Up Pages -->
+  <url>
+    <loc>https://www.levelplay.co/sign-up</loc>
+    <lastmod>2025-01-09T18:29:27.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>

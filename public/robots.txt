@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+
+# High-priority pages
+Allow: /opportunities
+Allow: /venues
+Allow: /artists
+Allow: /apply
+
+# Block admin and private areas
+Disallow: /admin-dashboard
+Disallow: /dashboard
+Disallow: /sign-in
+Disallow: /sign-up
+Disallow: /api/
+
+# Allow search engines to access images
+Allow: /images/
+Allow: /_next/static/
+Allow: /favicon.ico
+Allow: /og-image.png
+
+# Sitemap location
+Sitemap: https://www.levelplay.co/sitemap.xml
+
+# Crawl delay (optional - helps with server load)
+Crawl-delay: 1
