@@ -1,43 +1,47 @@
-"use client"
-import type React from "react"
+"use client";
+import type React from "react";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu"
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, User, LogOut, LayoutDashboard, X } from "lucide-react"
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import { useAuth } from "@/contexts/auth-context"
-import { usePathname, useRouter } from "next/navigation"
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, User, LogOut, LayoutDashboard, X } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/contexts/auth-context";
+import { usePathname, useRouter } from "next/navigation";
 
 export function MainNav() {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { user, profile, signOut } = useAuth()
-  const pathname = usePathname()
-  const router = useRouter()
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, profile, signOut } = useAuth();
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 10
+      const isScrolled = window.scrollY > 10;
       if (isScrolled !== scrolled) {
-        setScrolled(isScrolled)
+        setScrolled(isScrolled);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [scrolled])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolled]);
 
   // Navigation items that should always work regardless of auth status
   const navItems = [
@@ -46,79 +50,79 @@ export function MainNav() {
     { href: "/opportunities", label: "Opportunities" },
     { href: "/backstage", label: "Backstage" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
   const getDashboardUrl = () => {
-    if (!profile) return "/dashboard"
+    if (!profile) return "/dashboard";
 
     if (profile.role === "admin") {
-      return "/dashboard/admin"
+      return "/dashboard/admin";
     }
     if (profile.role === "venue") {
-      return "/dashboard/venue"
+      return "/dashboard/venue";
     }
-    return "/dashboard"
-  }
+    return "/dashboard";
+  };
 
   const getDisplayName = () => {
     // First try profile name
     if (profile?.name) {
-      return profile.name
+      return profile.name;
     }
     // Then try user metadata
     if (user?.user_metadata?.name) {
-      return user.user_metadata.name
+      return user.user_metadata.name;
     }
     if (user?.user_metadata?.full_name) {
-      return user.user_metadata.full_name
+      return user.user_metadata.full_name;
     }
     // Finally try email prefix
     if (user?.email) {
-      return user.email.split("@")[0]
+      return user.email.split("@")[0];
     }
-    return "User"
-  }
+    return "User";
+  };
 
   const handleSignOut = async (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
 
     try {
-      await signOut()
+      await signOut();
 
       // Clear any cached data
       if (typeof window !== "undefined") {
-        localStorage.clear()
-        sessionStorage.clear()
+        localStorage.clear();
+        sessionStorage.clear();
       }
 
       // Force redirect to home page
-      window.location.href = "/"
+      window.location.href = "/";
     } catch (error) {
       // Force redirect even if there's an error
-      window.location.href = "/"
+      window.location.href = "/";
     }
-  }
+  };
 
   // Handle navigation clicks to ensure they go to the right place
   const handleNavClick = (href: string, e: React.MouseEvent) => {
-    e.preventDefault()
-    setMobileMenuOpen(false)
-    router.push(href)
-  }
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    router.push(href);
+  };
 
   const handleDashboardClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    const dashboardUrl = getDashboardUrl()
-    setMobileMenuOpen(false)
-    window.location.href = dashboardUrl
-  }
+    e.preventDefault();
+    e.stopPropagation();
+    const dashboardUrl = getDashboardUrl();
+    setMobileMenuOpen(false);
+    window.location.href = dashboardUrl;
+  };
 
   // Check if we're on a dashboard page
-  const isDashboardPage = pathname?.startsWith("/dashboard")
+  const isDashboardPage = pathname?.startsWith("/dashboard");
 
-  const displayName = getDisplayName()
+  const displayName = getDisplayName();
 
   return (
     <header
@@ -126,7 +130,7 @@ export function MainNav() {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled || isDashboardPage
           ? "bg-navy/95 backdrop-blur-xl py-3 shadow-2xl border-b border-navy-light/20"
-          : "bg-transparent py-4",
+          : "bg-transparent py-4"
       )}
     >
       <div className="container flex items-center justify-between px-4">
@@ -135,7 +139,13 @@ export function MainNav() {
           className="flex items-center space-x-2 z-10 hover:opacity-80 transition-opacity"
         >
           <div className="relative h-10 w-20 md:h-12 md:w-24">
-            <Image src="/logo.png" alt="Level Play" fill className="object-contain" priority />
+            <Image
+              src="/logo.png"
+              alt="Level Play"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </button>
 
@@ -150,7 +160,9 @@ export function MainNav() {
                     className={cn(
                       "group inline-flex h-10 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-200",
                       "hover:bg-orange/10 hover:text-orange focus:text-orange focus:outline-none",
-                      pathname === item.href ? "text-orange bg-orange/10" : "text-white hover:scale-105",
+                      pathname === item.href
+                        ? "text-orange bg-orange/10"
+                        : "text-white hover:scale-105"
                     )}
                   >
                     {item.label}
@@ -174,11 +186,20 @@ export function MainNav() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-navy/95 backdrop-blur-xl border-navy-light w-full sm:w-80">
+            <SheetContent
+              side="right"
+              className="bg-navy/95 backdrop-blur-xl border-navy-light w-full sm:w-80"
+            >
               <div className="flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center justify-between pb-6 border-b border-navy-light/20">
-                  <Image src="/logo.png" alt="Level Play" width={100} height={60} className="object-contain" />
+                  <Image
+                    src="/logo.png"
+                    alt="Level Play"
+                    width={100}
+                    height={60}
+                    className="object-contain"
+                  />
                   <Button
                     variant="ghost"
                     size="icon"
@@ -199,7 +220,7 @@ export function MainNav() {
                         "text-left text-lg font-medium py-3 px-4 rounded-xl transition-all duration-200",
                         pathname === item.href
                           ? "text-orange bg-orange/10"
-                          : "text-white hover:bg-orange/10 hover:text-orange hover:translate-x-2",
+                          : "text-white hover:bg-orange/10 hover:text-orange hover:translate-x-2"
                       )}
                     >
                       {item.label}
@@ -216,8 +237,12 @@ export function MainNav() {
                           <User className="h-5 w-5 text-orange" />
                         </div>
                         <div>
-                          <p className="font-medium text-white">{displayName}</p>
-                          <p className="text-xs text-gray-400 capitalize">{profile.role}</p>
+                          <p className="font-medium text-white">
+                            {displayName}
+                          </p>
+                          <p className="text-xs text-gray-400 capitalize">
+                            {profile.role}
+                          </p>
                         </div>
                       </div>
                       <Button
@@ -281,7 +306,11 @@ export function MainNav() {
                 <div className="px-3 py-2">
                   <p className="text-sm font-medium">{displayName}</p>
                   <p className="text-xs text-gray-400">{user?.email}</p>
-                  {profile?.role && <p className="text-xs text-gray-400 capitalize pt-1">Role: {profile.role}</p>}
+                  {profile?.role && (
+                    <p className="text-xs text-gray-400 capitalize pt-1">
+                      Role: {profile.role}
+                    </p>
+                  )}
                 </div>
                 <DropdownMenuSeparator className="bg-navy" />
                 <DropdownMenuItem
@@ -293,8 +322,8 @@ export function MainNav() {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick("/account", e)
+                    e.preventDefault();
+                    handleNavClick("/account", e);
                   }}
                   className="hover:bg-navy cursor-pointer rounded-lg mx-1"
                 >
@@ -331,5 +360,5 @@ export function MainNav() {
         </div>
       </div>
     </header>
-  )
+  );
 }

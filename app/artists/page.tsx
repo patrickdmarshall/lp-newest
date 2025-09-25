@@ -138,9 +138,28 @@ export default function ArtistsPage() {
             </div>
           </DiscoverHero>
 
-          {/* Artists Grid */}
-          <div className="bg-navy py-12">
-            <div className="container px-4 md:px-6">
+              {/* Database Migration Notice */}
+              <div className="bg-navy py-8">
+                <div className="container px-4 md:px-6">
+                  <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 mb-8">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-orange-500/20 flex items-center justify-center">
+                        <span className="text-orange-400 text-sm">⚠️</span>
+                      </div>
+                      <div>
+                        <h3 className="text-orange-300 font-semibold text-lg">Database Migration in Progress</h3>
+                        <p className="text-orange-200/80 text-sm">
+                          We're currently migrating our database to improve performance. All artist profiles will be visible again soon. Thank you for your patience!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Artists Grid */}
+              <div className="bg-navy py-12">
+                <div className="container px-4 md:px-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredArtists.map((artist) => (
                   <Link key={artist.id} href={`/artists/${artist.slug}`}>
