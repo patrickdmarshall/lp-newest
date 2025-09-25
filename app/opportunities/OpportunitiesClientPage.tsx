@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { MainNav } from "@/components/main-nav"
+import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -11,6 +13,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { useAuth } from "@/contexts/auth-context"
 import { SignInWall } from "@/components/sign-in-wall"
+import DiscoverHero from "@/components/DiscoverHero"
 
 const allOpportunities = [
   {
@@ -136,28 +139,38 @@ export default function OpportunitiesClientPage() {
   }
 
   return (
-    <div className="min-h-screen bg-navy pt-24">
-      <div className="container px-4 md:px-6 py-12">
-        <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Performance Opportunities</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Discover live music opportunities at Columbus's premier venues. Apply for gigs, find supporting slots, and
-              advance your music career.
-            </p>
-          </div>
-
-          {/* Search and Filters */}
-          <div className="mb-8 space-y-4 md:space-y-0 md:flex md:gap-4 md:items-center">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
-                placeholder="Search opportunities, venues, or artists..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-navy-light border-navy-dark text-white placeholder-gray-400"
-              />
+    <div className="flex min-h-screen flex-col bg-navy">
+      <MainNav />
+      
+      <div className="bg-navy pt-24">
+        <DiscoverHero
+          title="Performance Opportunities"
+          subtitle="Discover live music opportunities at Columbus's premier venues. Apply for gigs, find supporting slots, and advance your music career."
+          searchPlaceholder="Search opportunities..."
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Search Bar */}
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search opportunities..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
+                />
+              </div>
             </div>
+          </div>
+        </DiscoverHero>
+
+        <div className="container px-4 md:px-6 py-12">
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+
+          {/* Filters */}
+          <div className="mb-8 space-y-4 md:space-y-0 md:flex md:gap-4 md:items-center">
             <div className="flex gap-2">
               <select
                 value={selectedGenre}
@@ -284,7 +297,11 @@ export default function OpportunitiesClientPage() {
               </p>
             </div>
           )}
-        </motion.div>
+          </motion.div>
+        </div>
+        </div>
+        
+        <Footer />
       </div>
     </div>
   )

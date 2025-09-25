@@ -5,10 +5,12 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { MapPin } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { MapPin, Search } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import Link from "next/link"
+import DiscoverHero from "@/components/DiscoverHero"
 
 const teamMembers = [
   {
@@ -65,28 +67,26 @@ export default function BackstagePage() {
       <MainNav />
 
       <div className="bg-navy pt-24">
-        <section className="bg-navy-light text-white py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,107,53,0.1),transparent_50%)]"></div>
-          <div className="container px-4 md:px-6 relative z-10">
-            <motion.div
-              ref={ref}
-              variants={staggerContainer}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <motion.h1
-                variants={fadeInUp}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-syne"
-              >
-                Meet the <span className="text-orange">Team</span>
-              </motion.h1>
-              <motion.p variants={fadeInUp} className="text-xl text-gray-300 mb-10 font-light leading-relaxed">
-                Get to know the people behind Level Play who are dedicated to empowering artists and venues.
-              </motion.p>
-            </motion.div>
+        <DiscoverHero
+          title="Meet the Team"
+          subtitle="Get to know the people behind Level Play who are dedicated to empowering artists and venues."
+          searchPlaceholder="Search team members..."
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Search Bar */}
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search team members..."
+                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
+                />
+              </div>
+            </div>
           </div>
-        </section>
+        </DiscoverHero>
 
         <section className="bg-navy py-20">
           <div className="container px-4 md:px-6">

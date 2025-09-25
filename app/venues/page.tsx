@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Search, Filter, MapPin, Users, Star, Calendar, Music } from "lucide-react"
+import { MainNav } from "@/components/main-nav"
+import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import Link from "next/link"
+import DiscoverHero from "@/components/DiscoverHero"
 
 interface Venue {
   id: string
@@ -111,97 +114,38 @@ export default function VenuesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-navy-dark via-navy to-black">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-navy-dark via-navy to-black py-20 overflow-hidden">
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 5, 0],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-            }}
-            className="absolute top-20 left-20 text-orange-400 opacity-30"
-          >
-            <Music size={40} />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              y: [0, 15, 0],
-              rotate: [0, -5, 0],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 1,
-            }}
-            className="absolute top-40 right-32 text-blue-400 opacity-30"
-          >
-            <Users size={35} />
-          </motion.div>
-
-          <motion.div
-            animate={{
-              y: [0, -10, 0],
-              rotate: [0, 3, 0],
-            }}
-            transition={{
-              duration: 7,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: "easeInOut",
-              delay: 2,
-            }}
-            className="absolute bottom-32 left-1/4 text-purple-400 opacity-30"
-          >
-            <Calendar size={30} />
-          </motion.div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              <span className="bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
-                Discover{" "}
-              </span>
-              Venues
-            </h1>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              Find the perfect stage for your next performance
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-2xl mx-auto"
-          >
+    <div className="flex min-h-screen flex-col bg-navy">
+      <MainNav />
+      
+      <div className="bg-navy pt-24">
+        <DiscoverHero
+          title="Discover Venues"
+          subtitle="Find the perfect stage for your next performance"
+          searchPlaceholder="Search venues..."
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
             {/* Search Bar */}
-            <div className="relative mb-6">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <Input
-                type="text"
-                placeholder="Search venues..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-12 pr-4 py-4 text-lg bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-gray-400 rounded-2xl focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-              />
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search venues..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
+                />
+              </div>
             </div>
 
             {/* Filters */}
-            <div className="space-y-4">
+            <div className="w-full max-w-xs mx-auto px-4 sm:px-0">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setShowFilters(!showFilters)}
-                className="border-white/20 text-white hover:bg-white/10 rounded-xl bg-transparent"
+                className="w-full border-navy-light text-white hover:bg-navy-light bg-transparent"
               >
                 <Filter className="h-4 w-4 mr-2" />
                 Filters {selectedGenres.length > 0 && `(${selectedGenres.length})`}
@@ -212,17 +156,17 @@ export default function VenuesPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20"
+                  className="mt-4 bg-navy-light rounded-2xl p-4 border border-navy"
                 >
                   <div className="flex flex-wrap gap-2 justify-center">
                     {allGenres.map((genre) => (
                       <Badge
                         key={genre}
                         variant={selectedGenres.includes(genre) ? "default" : "outline"}
-                        className={`cursor-pointer transition-all rounded-full px-4 py-2 ${
+                        className={`cursor-pointer transition-all rounded-full px-3 py-1 text-xs ${
                           selectedGenres.includes(genre)
-                            ? "bg-orange-500 text-white border-orange-500"
-                            : "border-white/30 text-white hover:bg-white/10"
+                            ? "bg-orange text-navy border-orange"
+                            : "border-navy-light text-white hover:bg-navy-light"
                         }`}
                         onClick={() => toggleGenre(genre)}
                       >
@@ -233,9 +177,8 @@ export default function VenuesPage() {
                 </motion.div>
               )}
             </div>
-          </motion.div>
-        </div>
-      </div>
+          </div>
+        </DiscoverHero>
 
       {/* Venues Grid */}
       <div className="container mx-auto px-4 py-12">
@@ -333,6 +276,10 @@ export default function VenuesPage() {
             </Button>
           </motion.div>
         )}
+        </div>
+        </div>
+        
+        <Footer />
       </div>
     </div>
   )

@@ -1,11 +1,14 @@
 "use client"
 
+import { MainNav } from "@/components/main-nav"
+import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Clock, MapPin } from "lucide-react"
+import { Clock, MapPin, Search } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import DiscoverHero from "@/components/DiscoverHero"
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -31,30 +34,30 @@ export default function ContactPage() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <div className="bg-navy pt-24">
-      <section className="bg-navy-light text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,107,53,0.1),transparent_50%)]"></div>
-        <div className="container px-4 md:px-6 relative z-10">
-          <motion.div
-            ref={ref}
-            variants={staggerContainer}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-syne"
-            >
-              Get in <span className="text-orange">Touch</span>
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="text-xl text-gray-300 mb-10 font-light leading-relaxed">
-              Have questions about Level Play? Ready to join our community? We're here to help you connect with the
-              music scene.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+    <div className="flex min-h-screen flex-col bg-navy">
+      <MainNav />
+      
+      <div className="bg-navy pt-24">
+        <DiscoverHero
+          title="Get in Touch"
+          subtitle="Have questions about Level Play? Ready to join our community? We're here to help you connect with the music scene."
+          searchPlaceholder="Search help topics..."
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Search Bar */}
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search help topics..."
+                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
+                />
+              </div>
+            </div>
+          </div>
+        </DiscoverHero>
 
       <section className="bg-navy py-20">
         <div className="container px-4 md:px-6">
@@ -170,6 +173,9 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
+      </div>
+      
+      <Footer />
     </div>
   )
 }
