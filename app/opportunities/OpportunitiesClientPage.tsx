@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { MainNav } from "@/components/main-nav";
 import { Footer } from "@/components/footer";
 import { useAuth } from "@/contexts/auth-context";
@@ -28,8 +28,10 @@ export default function OpportunitiesClientPage() {
     <div className="flex min-h-screen flex-col bg-navy">
       <MainNav />
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-white text-3xl font-bold mb-8">Performance Opportunities - FULL VERSION COMING BACK</h1>
-        <p className="text-gray-300">Sorry for the confusion! I accidentally replaced your full opportunities page. Let me properly restore it with all the features...</p>
+        <h1 className="text-white text-3xl font-bold mb-8">
+          Performance Opportunities
+        </h1>
+        <p className="text-gray-300">Coming soon...</p>
       </div>
       <Footer />
     </div>
