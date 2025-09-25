@@ -6,7 +6,8 @@ import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, MapPin, Users, AlertCircle } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Calendar, Clock, MapPin, Users, AlertCircle, Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -146,8 +147,24 @@ export default function OpportunitiesClientPage() {
           title="Performance Opportunities"
           subtitle="Discover live music opportunities at Columbus's premier venues. Apply for gigs, find supporting slots, and advance your music career."
           searchPlaceholder="Search opportunities..."
-          showFilters={false}
-        />
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Search Bar */}
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search opportunities..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 text-sm sm:text-base bg-navy/50 border-navy-dark text-white placeholder-gray-400 rounded-full backdrop-blur-sm focus:border-orange focus:ring-orange/20 transition-all duration-300 w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </DiscoverHero>
 
         <div className="container px-4 md:px-6 py-12">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp}>

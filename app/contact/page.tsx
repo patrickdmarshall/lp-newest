@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Clock, MapPin } from "lucide-react";
+import { Clock, MapPin, Search } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import DiscoverHero from "@/components/DiscoverHero";
@@ -42,8 +42,22 @@ export default function ContactPage() {
           title="Get in Touch"
           subtitle="Have questions about Level Play? Ready to join our community? We're here to help you connect with the music scene."
           searchPlaceholder="Search help topics..."
-          showFilters={false}
-        />
+          className="fixed-hero-bg"
+        >
+          <div className="max-w-4xl mx-auto space-y-4">
+            {/* Search Bar */}
+            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
+              <div className="relative">
+                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search help topics..."
+                  className="pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 text-sm sm:text-base bg-navy/50 border-navy-dark text-white placeholder-gray-400 rounded-full backdrop-blur-sm focus:border-orange focus:ring-orange/20 transition-all duration-300 w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </DiscoverHero>
 
         <section className="bg-navy py-20">
           <div className="container px-4 md:px-6">
