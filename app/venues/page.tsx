@@ -1,6 +1,7 @@
+/** @jsxImportSource react */
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Search, Filter, MapPin, Users, Star, Calendar, Music } from "lucide-react"
 import { MainNav } from "@/components/main-nav"
@@ -73,12 +74,12 @@ const venues: Venue[] = [
 ]
 
 export default function VenuesPage() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([])
-  const [filteredVenues, setFilteredVenues] = useState<Venue[]>(venues)
-  const [showFilters, setShowFilters] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [filteredVenues, setFilteredVenues] = useState<Venue[]>(venues);
+  const [showFilters, setShowFilters] = useState(false);
 
-  const allGenres = Array.from(new Set(venues.flatMap((venue) => venue.genres)))
+  const allGenres = Array.from(new Set(venues.flatMap((venue) => venue.genres)));
 
   useEffect(() => {
     let filtered = venues
@@ -98,20 +99,20 @@ export default function VenuesPage() {
       filtered = filtered.filter((venue) => venue.genres.some((genre) => selectedGenres.includes(genre)))
     }
 
-    setFilteredVenues(filtered)
-  }, [searchQuery, selectedGenres])
+    setFilteredVenues(filtered);
+  }, [searchQuery, selectedGenres]);
 
   const handleSearch = (query: string) => {
-    setSearchQuery(query)
-  }
+    setSearchQuery(query);
+  };
 
   const handleFilterChange = (filters: string[]) => {
-    setSelectedGenres(filters)
-  }
+    setSelectedGenres(filters);
+  };
 
   const toggleGenre = (genre: string) => {
-    setSelectedGenres((prev) => (prev.includes(genre) ? prev.filter((g) => g !== genre) : [...prev, genre]))
-  }
+    setSelectedGenres((prev) => (prev.includes(genre) ? prev.filter((g) => g !== genre) : [...prev, genre]));
+  };
 
   return (
     <div className="flex min-h-screen flex-col bg-navy">

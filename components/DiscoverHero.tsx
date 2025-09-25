@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import { Search, Filter, Music, Users, Calendar } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { useState } from "react"
+import { motion } from "framer-motion";
+import { Search, Filter, Music, Users, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
 
 interface DiscoverHeroProps {
-  title?: string
-  subtitle?: string
-  searchPlaceholder?: string
-  onSearch?: (query: string) => void
-  onFilterChange?: (filters: string[]) => void
-  showFilters?: boolean
-  children?: React.ReactNode
+  title?: string;
+  subtitle?: string;
+  searchPlaceholder?: string;
+  onSearch?: (query: string) => void;
+  onFilterChange?: (filters: string[]) => void;
+  showFilters?: boolean;
+  children?: React.ReactNode;
 }
 
 export function DiscoverHero({
@@ -28,9 +28,9 @@ export function DiscoverHero({
   showFilters = true,
   children,
 }: DiscoverHeroProps) {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([])
-  const [showFilterMenu, setShowFilterMenu] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [showFilterMenu, setShowFilterMenu] = useState(false);
 
   const filterOptions = [
     "Rock",
@@ -43,21 +43,21 @@ export function DiscoverHero({
     "Metal",
     "Indie",
     "Blues",
-  ]
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    onSearch?.(searchQuery)
-  }
+    e.preventDefault();
+    onSearch?.(searchQuery);
+  };
 
   const toggleFilter = (filter: string) => {
     const newFilters = selectedFilters.includes(filter)
       ? selectedFilters.filter((f) => f !== filter)
-      : [...selectedFilters, filter]
+      : [...selectedFilters, filter];
 
-    setSelectedFilters(newFilters)
-    onFilterChange?.(newFilters)
-  }
+    setSelectedFilters(newFilters);
+    onFilterChange?.(newFilters);
+  };
 
   return (
     <div className="relative bg-gradient-to-br from-navy-dark via-navy to-black py-20 overflow-hidden">
@@ -112,7 +112,11 @@ export function DiscoverHero({
       </div>
 
       <div className="container mx-auto px-4 text-center relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             {title.split(" ").map((word, index) => (
               <span key={index} className={index === 0 ? "text-gradient" : ""}>
@@ -120,7 +124,9 @@ export function DiscoverHero({
               </span>
             ))}
           </h1>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">{subtitle}</p>
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            {subtitle}
+          </p>
         </motion.div>
 
         {children ? (
@@ -162,7 +168,8 @@ export function DiscoverHero({
                   className="border-white/20 text-white hover:bg-white/10 rounded-xl bg-transparent"
                 >
                   <Filter className="h-4 w-4 mr-2" />
-                  Filters {selectedFilters.length > 0 && `(${selectedFilters.length})`}
+                  Filters{" "}
+                  {selectedFilters.length > 0 && `(${selectedFilters.length})`}
                 </Button>
 
                 {showFilterMenu && (
@@ -176,7 +183,11 @@ export function DiscoverHero({
                       {filterOptions.map((filter) => (
                         <Badge
                           key={filter}
-                          variant={selectedFilters.includes(filter) ? "default" : "outline"}
+                          variant={
+                            selectedFilters.includes(filter)
+                              ? "default"
+                              : "outline"
+                          }
                           className={`cursor-pointer transition-all rounded-full px-4 py-2 ${
                             selectedFilters.includes(filter)
                               ? "bg-orange-500 text-white border-orange-500"
@@ -196,7 +207,7 @@ export function DiscoverHero({
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default DiscoverHero
+export default DiscoverHero;

@@ -1,6 +1,7 @@
+/** @jsxImportSource react */
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { MainNav } from "@/components/main-nav"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
@@ -103,10 +104,10 @@ const fadeInUp = {
 }
 
 export default function OpportunitiesClientPage() {
-  const { user, loading } = useAuth()
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedGenre, setSelectedGenre] = useState("All")
-  const [selectedType, setSelectedType] = useState("All")
+  const { user, loading } = useAuth();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
 
   const filteredOpportunities = allOpportunities.filter((opportunity) => {
     const matchesSearch =
@@ -120,8 +121,8 @@ export default function OpportunitiesClientPage() {
     return matchesSearch && matchesGenre && matchesType && opportunity.status === "open"
   })
 
-  const genres = ["All", ...Array.from(new Set(allOpportunities.flatMap((opp) => opp.genre)))]
-  const types = ["All", "Supporting", "Headliner"]
+  const genres = ["All", ...Array.from(new Set(allOpportunities.flatMap((opp) => opp.genre)))];
+  const types = ["All", "Supporting", "Headliner"];
 
   if (loading) {
     return (
@@ -135,7 +136,7 @@ export default function OpportunitiesClientPage() {
   }
 
   if (!user) {
-    return <SignInWall />
+    return <SignInWall />;
   }
 
   return (
