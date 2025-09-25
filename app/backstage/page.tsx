@@ -5,8 +5,7 @@ import { Footer } from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { MapPin, Search } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
@@ -71,22 +70,8 @@ export default function BackstagePage() {
           title="Meet the Team"
           subtitle="Get to know the people behind Level Play who are dedicated to empowering artists and venues."
           searchPlaceholder="Search team members..."
-          className="fixed-hero-bg"
-        >
-          <div className="max-w-4xl mx-auto space-y-4">
-            {/* Search Bar */}
-            <div className="w-full max-w-2xl mx-auto px-4 sm:px-0">
-              <div className="relative">
-                <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
-                <Input
-                  type="text"
-                  placeholder="Search team members..."
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
-                />
-              </div>
-            </div>
-          </div>
-        </DiscoverHero>
+          showFilters={false}
+        />
 
         <section className="bg-navy py-20">
           <div className="container px-4 md:px-6">
