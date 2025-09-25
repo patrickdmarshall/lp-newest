@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { MainNav } from "@/components/main-nav"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { MapPin, ArrowLeft, Code, Zap, Target } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
+import { MainNav } from "@/components/main-nav";
+import { Footer } from "@/components/footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { MapPin, ArrowLeft, Code, Zap, Target, Users, Building, Calendar } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,7 +16,7 @@ const fadeInUp = {
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" },
   },
-}
+};
 
 export default function BradyPage() {
   return (
@@ -209,5 +209,5 @@ export default function BradyPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

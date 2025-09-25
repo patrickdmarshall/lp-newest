@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { MainNav } from "@/components/main-nav"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { MapPin, ArrowLeft, Terminal, Cpu, Globe } from "lucide-react"
-import Link from "next/link"
-import { motion } from "framer-motion"
+import { MainNav } from "@/components/main-nav";
+import { Footer } from "@/components/footer";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { MapPin, ArrowLeft, Terminal, Cpu, Globe, Code, Zap, Database } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -16,7 +16,7 @@ const fadeInUp = {
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" },
   },
-}
+};
 
 export default function PatrickPage() {
   return (
@@ -25,40 +25,63 @@ export default function PatrickPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <div className="relative h-[600px] md:h-[700px] bg-navy-dark flex items-end p-6">
-          <div
-            className="absolute inset-0 bg-contain bg-no-repeat bg-center"
-            style={{
-              backgroundImage: `url(/images/patrick.jpeg)`,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-          <div className="relative z-10 text-white max-w-4xl">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 font-syne">Patrick</h1>
-              <div className="flex items-center gap-2 mb-4">
-                <MapPin className="h-5 w-5 text-orange" />
-                <span className="text-lg">Los Angeles, CA</span>
+        <div className="bg-navy pt-24">
+          <div className="container px-4 md:px-6 py-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl mx-auto"
+            >
+              {/* Back Button */}
+              <Link href="/backstage" className="inline-block mb-8">
+                <Button variant="outline" className="border-navy-light text-white hover:bg-navy-light bg-transparent">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Back to Team
+                </Button>
+              </Link>
+
+              {/* Profile Header */}
+              <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mb-12">
+                <div className="relative">
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-navy-light border-4 border-orange/20">
+                    <img
+                      src="/images/patrick.jpeg"
+                      alt="Patrick"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-orange rounded-full flex items-center justify-center">
+                    <span className="text-navy text-sm font-bold">⚡</span>
+                  </div>
+                </div>
+                
+                <div className="flex-1">
+                  <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 font-syne">Patrick</h1>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="h-5 w-5 text-orange" />
+                    <span className="text-lg text-gray-300">Los Angeles, CA</span>
+                  </div>
+                  <Badge className="bg-orange/20 text-orange border-orange/30 text-lg px-4 py-2 mb-4">
+                    Senior Engineer
+                  </Badge>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    Powering Level Play's technical infrastructure with world-class engineering expertise from the West Coast.
+                  </p>
+                </div>
               </div>
-              <Badge className="bg-orange/20 text-orange border-orange/30 text-lg px-4 py-2">Senior Engineer</Badge>
             </motion.div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="container px-4 md:px-6 py-12">
-          <div className="max-w-4xl mx-auto space-y-8">
-            {/* Back Button */}
-            <Link href="/backstage">
-              <Button variant="outline" className="border-navy-light text-white hover:bg-navy-light bg-transparent">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Team
-              </Button>
-            </Link>
+        <div className="bg-navy-light">
+          <div className="container px-4 md:px-6 py-12">
+            <div className="max-w-4xl mx-auto space-y-8">
 
             {/* About Section */}
             <motion.div variants={fadeInUp} initial="hidden" animate="visible">
-              <Card className="bg-navy-light border-navy">
+              <Card className="bg-navy border-navy-light hover:border-orange/30 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-white text-2xl flex items-center gap-3">
                     <Terminal className="h-6 w-6 text-orange" />
@@ -82,32 +105,56 @@ export default function PatrickPage() {
 
             {/* Technical Expertise Section */}
             <motion.div variants={fadeInUp} initial="hidden" animate="visible" transition={{ delay: 0.2 }}>
-              <Card className="bg-navy-light border-navy">
+              <Card className="bg-navy border-navy-light hover:border-orange/30 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-white text-2xl flex items-center gap-3">
                     <Cpu className="h-6 w-6 text-orange" />
                     Technical Expertise
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <h4 className="text-orange font-semibold text-lg">Core Technologies</h4>
-                      <ul className="text-gray-300 space-y-2">
-                        <li>• React & Next.js Development</li>
-                        <li>• Node.js & Backend Systems</li>
-                        <li>• Database Design & Optimization</li>
-                        <li>• Cloud Infrastructure & DevOps</li>
-                      </ul>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">React & Next.js Development</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Node.js & Backend Systems</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Database Design & Optimization</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Cloud Infrastructure & DevOps</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       <h4 className="text-orange font-semibold text-lg">Specializations</h4>
-                      <ul className="text-gray-300 space-y-2">
-                        <li>• Performance Optimization</li>
-                        <li>• Security & Data Protection</li>
-                        <li>• API Design & Integration</li>
-                        <li>• Mobile-First Development</li>
-                      </ul>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Performance Optimization</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Security & Data Protection</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">API Design & Integration</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-orange rounded-full"></div>
+                          <span className="text-gray-300">Mobile-First Development</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -116,35 +163,35 @@ export default function PatrickPage() {
 
             {/* Impact Section */}
             <motion.div variants={fadeInUp} initial="hidden" animate="visible" transition={{ delay: 0.4 }}>
-              <Card className="bg-navy-light border-navy">
+              <Card className="bg-navy border-navy-light hover:border-orange/30 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-white text-2xl flex items-center gap-3">
                     <Globe className="h-6 w-6 text-orange" />
                     Impact & Innovation
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="space-y-6">
                   <p className="text-gray-300 leading-relaxed text-lg">
                     Patrick's engineering excellence ensures that Level Play can handle the demands of a growing music
                     community while maintaining the speed and reliability that users expect. His attention to detail and
                     commitment to best practices make the platform a joy to use for both artists and venues.
                   </p>
-                  <div className="mt-6 p-4 bg-orange/10 rounded-lg border border-orange/20">
-                    <p className="text-orange font-medium italic">
-                      "Great software should be invisible to the user but powerful under the hood. Every line of code
-                      should serve the mission of connecting artists with their perfect stage."
-                    </p>
-                  </div>
-                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-4 bg-navy/50 rounded-lg">
-                      <h5 className="text-orange font-semibold mb-2">Platform Performance</h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-6 bg-navy/50 rounded-xl border border-navy-light">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Zap className="h-5 w-5 text-orange" />
+                        <h5 className="text-orange font-semibold">Platform Performance</h5>
+                      </div>
                       <p className="text-gray-300 text-sm">
                         Optimized for sub-second load times and 99.9% uptime, ensuring artists never miss an
                         opportunity.
                       </p>
                     </div>
-                    <div className="p-4 bg-navy/50 rounded-lg">
-                      <h5 className="text-orange font-semibold mb-2">Security First</h5>
+                    <div className="p-6 bg-navy/50 rounded-xl border border-navy-light">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Database className="h-5 w-5 text-orange" />
+                        <h5 className="text-orange font-semibold">Security First</h5>
+                      </div>
                       <p className="text-gray-300 text-sm">
                         Enterprise-grade security protecting sensitive artist and venue data with industry best
                         practices.
@@ -154,11 +201,29 @@ export default function PatrickPage() {
                 </CardContent>
               </Card>
             </motion.div>
+
+            {/* Stats Section */}
+            <motion.div variants={fadeInUp} initial="hidden" animate="visible" transition={{ delay: 0.6 }}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center p-6 bg-navy border border-navy-light rounded-xl hover:border-orange/30 transition-all duration-300">
+                  <div className="text-3xl font-bold text-orange mb-2">99.9%</div>
+                  <div className="text-gray-300">Uptime</div>
+                </div>
+                <div className="text-center p-6 bg-navy border border-navy-light rounded-xl hover:border-orange/30 transition-all duration-300">
+                  <div className="text-3xl font-bold text-orange mb-2">&lt;1s</div>
+                  <div className="text-gray-300">Load Time</div>
+                </div>
+                <div className="text-center p-6 bg-navy border border-navy-light rounded-xl hover:border-orange/30 transition-all duration-300">
+                  <div className="text-3xl font-bold text-orange mb-2">24/7</div>
+                  <div className="text-gray-300">Monitoring</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </main>
 
       <Footer />
     </div>
-  )
+  );
 }

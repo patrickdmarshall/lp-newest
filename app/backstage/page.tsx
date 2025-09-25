@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { MainNav } from "@/components/main-nav"
-import { Footer } from "@/components/footer"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { MapPin, Search } from "lucide-react"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import Link from "next/link"
-import DiscoverHero from "@/components/DiscoverHero"
+import { MainNav } from "@/components/main-nav";
+import { Footer } from "@/components/footer";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { MapPin, Search } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import DiscoverHero from "@/components/DiscoverHero";
 
 const teamMembers = [
   {
@@ -37,7 +37,7 @@ const teamMembers = [
     role: "Senior Engineer",
     profile_picture: "/images/patrick.jpeg",
   },
-]
+];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -46,7 +46,7 @@ const fadeInUp = {
     y: 0,
     transition: { duration: 0.6, ease: "easeOut" },
   },
-}
+};
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -57,10 +57,10 @@ const staggerContainer = {
       delayChildren: 0.2,
     },
   },
-}
+};
 
 export default function BackstagePage() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
     <div className="flex min-h-screen flex-col bg-navy">
@@ -97,7 +97,11 @@ export default function BackstagePage() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
             >
               {teamMembers.map((member) => (
-                <motion.div key={member.id} variants={fadeInUp} className="group">
+                <motion.div
+                  key={member.id}
+                  variants={fadeInUp}
+                  className="group"
+                >
                   <Card className="bg-navy-light border-navy hover:border-orange/50 transition-all duration-300 group overflow-hidden hover:scale-[1.02] hover:shadow-2xl">
                     <div className="h-80 relative bg-navy-dark">
                       <img
@@ -118,7 +122,9 @@ export default function BackstagePage() {
                       </div>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <Badge className="bg-orange/20 text-orange border-none text-xs">{member.role}</Badge>
+                        <Badge className="bg-orange/20 text-orange border-none text-xs">
+                          {member.role}
+                        </Badge>
                       </div>
 
                       <Link href={`/backstage/${member.slug}`}>
@@ -137,5 +143,5 @@ export default function BackstagePage() {
 
       <Footer />
     </div>
-  )
+  );
 }
