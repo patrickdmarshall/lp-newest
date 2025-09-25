@@ -1,4 +1,3 @@
-/** @jsxImportSource react */
 "use client"
 
 import React, { useState } from "react"
@@ -49,47 +48,29 @@ const allOpportunities = [
     genre: ["Alternative", "Indie"],
     setLength: "30 min",
     description:
-      'Listen to his song "Red Hearts" and you\'ll become a fan of this young talent! Looking for support that matches sonically.',
-    urgent: true,
-    featured: true,
-    applicationDeadline: "August 7, 2025",
-    status: "open",
-  },
-  {
-    id: "hayden-coffman",
-    title: "Hayden Coffman",
-    venue: "A&R Music Bar",
-    venueSlug: "ar-music-bar",
-    image: "/images/ar-music-bar-new.jpg",
-    location: "Columbus, OH",
-    date: "August 29, 2025",
-    time: "8:00 PM",
-    type: "Supporting",
-    genre: ["Country"],
-    setLength: "30 min",
-    description:
-      "A rising star in the world of country music that infuses his own unique flair and authenticity into every song he creates.",
-    urgent: true,
-    featured: true,
-    applicationDeadline: "August 1, 2025",
-    status: "open",
-  },
-  {
-    id: "headliner-ar-music-bar",
-    title: "Headliner Opportunity – A&R Music Bar",
-    venue: "A&R Music Bar",
-    venueSlug: "ar-music-bar",
-    image: "/images/ar-music-bar-new.jpg",
-    location: "Columbus, OH",
-    date: "September 19, 2025",
-    time: "7:00 PM",
-    type: "Headliner",
-    genre: ["All Genres"],
-    setLength: "60 min",
-    description: "Looking for acts of any genre looking to promote their music or art.",
+      "Alternative/indie artist with a unique sound blending electronic and acoustic elements.",
     urgent: false,
+    featured: true,
+    applicationDeadline: "August 15, 2025",
+    status: "open",
+  },
+  {
+    id: "the-wild-reeds",
+    title: "The Wild Reeds",
+    venue: "Newport Music Hall",
+    venueSlug: "newport-music-hall",
+    image: "/images/newport-music-hall-new.jpg",
+    location: "Columbus, OH",
+    date: "October 15, 2025",
+    time: "8:00 PM",
+    type: "Headliner",
+    genre: ["Folk", "Indie"],
+    setLength: "60 min",
+    description:
+      "Los Angeles-based folk-rock band known for their harmonies and storytelling.",
+    urgent: true,
     featured: false,
-    applicationDeadline: "July 25, 2025",
+    applicationDeadline: "September 1, 2025",
     status: "open",
   },
 ]
@@ -113,13 +94,13 @@ export default function OpportunitiesClientPage() {
     const matchesSearch =
       opportunity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       opportunity.venue.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      opportunity.description.toLowerCase().includes(searchTerm.toLowerCase())
+      opportunity.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesGenre = selectedGenre === "All" || opportunity.genre.includes(selectedGenre)
-    const matchesType = selectedType === "All" || opportunity.type === selectedType
+    const matchesGenre = selectedGenre === "All" || opportunity.genre.includes(selectedGenre);
+    const matchesType = selectedType === "All" || opportunity.type === selectedType;
 
-    return matchesSearch && matchesGenre && matchesType && opportunity.status === "open"
-  })
+    return matchesSearch && matchesGenre && matchesType && opportunity.status === "open";
+  });
 
   const genres = ["All", ...Array.from(new Set(allOpportunities.flatMap((opp) => opp.genre)))];
   const types = ["All", "Supporting", "Headliner"];
@@ -132,7 +113,7 @@ export default function OpportunitiesClientPage() {
           <p className="text-white">Loading opportunities...</p>
         </div>
       </div>
-    )
+    );
   }
 
   if (!user) {
@@ -305,5 +286,5 @@ export default function OpportunitiesClientPage() {
         <Footer />
       </div>
     </div>
-  )
+  );
 }
