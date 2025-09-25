@@ -134,7 +134,7 @@ export default function VenuesPage() {
                   placeholder="Search venues..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 rounded-full bg-navy-light border-navy focus:ring-orange focus:border-orange text-white placeholder-gray-400 sm:pl-12 sm:py-3"
+                  className="pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 text-sm sm:text-base bg-navy/50 border-navy-dark text-white placeholder-gray-400 rounded-full backdrop-blur-sm focus:border-orange focus:ring-orange/20 transition-all duration-300 w-full"
                 />
               </div>
             </div>
