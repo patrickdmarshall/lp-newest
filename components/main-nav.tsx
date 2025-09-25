@@ -51,8 +51,11 @@ export function MainNav() {
   const getDashboardUrl = () => {
     if (!profile) return "/dashboard"
 
-    if (profile.role === "admin" || profile.role === "venue") {
-      return "/admin-dashboard"
+    if (profile.role === "admin") {
+      return "/dashboard/admin"
+    }
+    if (profile.role === "venue") {
+      return "/dashboard/venue"
     }
     return "/dashboard"
   }
@@ -113,7 +116,7 @@ export function MainNav() {
   }
 
   // Check if we're on a dashboard page
-  const isDashboardPage = pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin-dashboard")
+  const isDashboardPage = pathname?.startsWith("/dashboard")
 
   const displayName = getDisplayName()
 

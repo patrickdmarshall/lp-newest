@@ -75,12 +75,12 @@ export function DashboardHeader() {
 
   const handleDashboardClick = (e: React.MouseEvent) => {
     e.preventDefault()
-    const dashboardUrl = profile?.role === "admin" || profile?.role === "venue" ? "/admin-dashboard" : "/dashboard"
+    const dashboardUrl = profile?.role === "admin" ? "/dashboard/admin" : profile?.role === "venue" ? "/dashboard/venue" : "/dashboard"
     router.push(dashboardUrl)
   }
 
   // Determine dashboard URL based on role
-  const dashboardUrl = profile?.role === "admin" || profile?.role === "venue" ? "/admin-dashboard" : "/dashboard"
+  const dashboardUrl = profile?.role === "admin" ? "/dashboard/admin" : profile?.role === "venue" ? "/dashboard/venue" : "/dashboard"
   const displayName = getDisplayName()
 
   return (

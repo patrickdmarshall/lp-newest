@@ -10,9 +10,6 @@ import { Home, User, Calendar, FileText, Settings, Menu, LogOut, Music } from "l
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Profile", href: "/dashboard/profile", icon: User },
-  { name: "Applications", href: "/dashboard/applications", icon: FileText },
-  { name: "Bookings", href: "/dashboard/bookings", icon: Calendar },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
 ]
 
 interface SidebarProps {

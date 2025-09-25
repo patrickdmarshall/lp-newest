@@ -513,19 +513,19 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Link href="/admin-dashboard?tab=venues">
+                <Link href="/dashboard/admin?tab=venues">
                   <Button className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-6 text-lg">
                     <Building2 className="mr-2 h-5 w-5" />
                     Approve Venues
                   </Button>
                 </Link>
-                <Link href="/admin-dashboard?tab=applications">
+                <Link href="/dashboard/admin?tab=applications">
                   <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-6 text-lg">
                     <FileText className="mr-2 h-5 w-5" />
                     Review Applications
                   </Button>
                 </Link>
-                <Link href="/admin-dashboard?tab=analytics">
+                <Link href="/dashboard/admin?tab=analytics">
                   <Button
                     variant="outline"
                     className="w-full border-slate-600 text-slate-300 hover:bg-slate-700 bg-transparent font-semibold py-6 text-lg"

@@ -151,8 +151,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (isAuthPage) {
         setRedirectRef(true)
         let targetDashboard = "/dashboard"
-        if (profile.role === "admin") targetDashboard = "/admin-dashboard"
-        else if (profile.role === "venue") targetDashboard = "/admin-dashboard"
+        if (profile.role === "admin") targetDashboard = "/dashboard/admin"
+        else if (profile.role === "venue") targetDashboard = "/dashboard/venue"
         else if (profile.role === "pending_venue") targetDashboard = "/application-status/venue"
 
         router.push(targetDashboard)
