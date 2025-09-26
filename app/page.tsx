@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import ClientHomePage from "./ClientHomePage"
+import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
   title: "Level Play - Columbus Music Venue & Artist Booking Platform",
@@ -25,5 +25,5 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  return <ClientHomePage />
+  redirect("/maintenance")
 }
